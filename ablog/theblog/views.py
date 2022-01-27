@@ -1,4 +1,4 @@
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView
 from .models import Post
 
 
@@ -10,3 +10,9 @@ class HomeView(ListView):
 class ArticleView(DetailView):
     model = Post
     template_name = 'article.html'
+
+
+class AddPostView(CreateView):
+    model = Post
+    template_name = 'add.html'
+    fields = '__all__'
