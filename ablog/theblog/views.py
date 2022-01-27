@@ -1,5 +1,6 @@
 from django.views.generic import ListView, DetailView, CreateView
 from .models import Post
+from .forms import AddForm
 
 
 class HomeView(ListView):
@@ -14,5 +15,5 @@ class ArticleView(DetailView):
 
 class AddPostView(CreateView):
     model = Post
+    form_class = AddForm
     template_name = 'add.html'
-    fields = '__all__'
