@@ -24,3 +24,4 @@ class EditPostView(UpdateView):
     model = Post
     form_class = EditForm
     template_name = 'edit.html'
+    fields = ['title', 'subtitle', 'body']
