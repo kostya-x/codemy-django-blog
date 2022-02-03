@@ -4,7 +4,7 @@
 
 {% block content %}
 <h1>{{ post.title }}</h1>
-<small>By: {{ post.author }} <a href="{% url 'edit' post.pk %}">[ Edit ]</a> <a href="{% url 'delete' post.pk %}">[ Delete ]</a></small>
+<small>By: {{ post.author }} - {{ post.date }} | <a href="{% url 'edit' post.pk %}">[ Edit ]</a> <a href="{% url 'delete' post.pk %}">[ Delete ]</a></small>
 <hr>
 <p>{{ post.body }}</p>
 <hr>
