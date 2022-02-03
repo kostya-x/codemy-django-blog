@@ -4,12 +4,15 @@
 
 <h1>Delete a Post</h1>
 <h3>Delete: {{ post.title }}</h3>
-
+{% if user.is_authenticated %}
 <div class="form-group">d
     <form method="POST">
         {% csrf_token %}
         <button class="btn btn-danger">Delete</button>
     </form>
 </div>
+{% else %}
+<p>Logit to delete this post</p>
+{% endif %}
 
 {% endblock %}

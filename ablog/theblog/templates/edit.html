@@ -3,7 +3,7 @@
 {% block content %}
 
 <h1>Edit Post</h1>
-
+{% if user.is_authenticated %}
 <div class="form-group">
     <form method="POST">
         {% csrf_token %}
@@ -11,5 +11,8 @@
         <button class="btn btn-secondary">Save</button>
     </form>
 </div>
+{% else %}
+<p>Logit to edit this post</p>
+{% endif %}
 
 {% endblock %}
