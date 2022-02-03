@@ -1,7 +1,7 @@
-from dataclasses import fields
-from django.views.generic import ListView, DetailView, CreateView, UpdateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Post
 from .forms import AddForm, EditForm
+from django.urls import reverse_lazy
 
 
 class HomeView(ListView):
@@ -25,3 +25,9 @@ class EditPostView(UpdateView):
     form_class = EditForm
     template_name = 'edit.html'
     fields = ['title', 'subtitle', 'body']
+
+
+class DeletePostView(DeleteView):
+    model = Post
+    template_name = 'delete.html'
+    success_url = reverse_lazy('home')
