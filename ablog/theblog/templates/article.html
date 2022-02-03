@@ -6,7 +6,7 @@
 <h1>{{ post.title }}</h1>
 <small>By: {{ post.author }} - {{ post.date }}{% if user.is_authenticated %} | <a href="{% url 'edit' post.pk %}">[ Edit ]</a> <a href="{% url 'delete' post.pk %}">[ Delete ]</a>{% endif %}</small>
 <hr>
-<p>{{ post.body }}</p>
+<p>{{ post.body|safe }}</p>
 <hr>
 <a href="{% url 'home' %}" class="btn btn-secondary">BACK</a>
 {% endblock %}
