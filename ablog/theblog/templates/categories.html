@@ -1,11 +1,16 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>{{ cats }}</h1>
-<ul>
-{% for post in category_posts %}
-	<li><a href="{% url 'article' post.pk %}">{{ post.title }}</a> - {{ post.author }}  - {{ post.date }} | {{ post.category }}{% if user.is_authenticated %} | <a href="{% url 'edit' post.pk %}">[ Edit ]</a> <a href="{% url 'delete' post.pk %}">[ Delete ]</a>{% endif %}<br/>
-		{{ post.body|slice:200|safe }}...</li>
-{% endfor %}
-</ul>
+
+{% if category_posts %}
+    <h1>{{ cats }}</h1>
+    <ul>
+    {% for post in category_posts %}
+        <li><a href="{% url 'article' post.pk %}">{{ post.title }}</a> - {{ post.author }}  - {{ post.date }} | {{ post.category }}{% if user.is_authenticated %} | <a href="{% url 'edit' post.pk %}">[ Edit ]</a> <a href="{% url 'delete' post.pk %}">[ Delete ]</a>{% endif %}<br/>
+            {{ post.body|slice:200|safe }}...</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <h2>Sorry, there is no such category</h2>
+{% endif %}
 {% endblock %}
