@@ -1,4 +1,4 @@
-from dataclasses import fields
+from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Category, Post
 from .forms import AddForm, EditForm
@@ -9,6 +9,11 @@ class HomeView(ListView):
     model = Post
     template_name = 'home.html'
     ordering = ['-id']
+
+
+def CategoryView(request, cats):
+    category_posts = Post.objects.filter(category=cats)
+    return render(request, 'categories.html', {'cats': cats, 'category_posts': category_posts})
 
 
 class ArticleView(DetailView):
