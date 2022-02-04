@@ -4,7 +4,7 @@
 
 {% block content %}
 <h1>{{ post.title }}</h1>
-<small>By: {{ post.author }} - {{ post.date }} | {{ post.category }}{% if user.is_authenticated %} | <a href="{% url 'edit' post.pk %}">[ Edit ]</a> <a href="{% url 'delete' post.pk %}">[ Delete ]</a>{% endif %}</small>
+<small>By: {{ post.author }} - {{ post.date }} | <a href="{% url 'category' post.category %}">{{ post.category }}</a>{% if user.is_authenticated %} | <a href="{% url 'edit' post.pk %}">[ Edit ]</a> <a href="{% url 'delete' post.pk %}">[ Delete ]</a>{% endif %}</small>
 <hr>
 <p>{{ post.body|safe }}</p>
 <hr>
